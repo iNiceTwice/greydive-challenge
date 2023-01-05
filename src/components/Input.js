@@ -20,11 +20,12 @@ const Input = ({ label, required, type, name, value, options, onChange }) => {
             {
                 type === "select" ?
 
-                <select className="w-full border rounded-lg py-3 px-4 focus:outline-blue-500">
+                <select name={ name } onChange={ onChange } className="w-full border rounded-lg py-3 px-4 focus:outline-blue-500">
                     {
                         options.map((option) => (
                             <option 
                                 key={ option.label } 
+                                name={ option.value }
                                 value={ option.value }
                             >
                                 { option.label }

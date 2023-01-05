@@ -18,7 +18,7 @@ const Form = () => {
         full_name:"",
         email:"",
         birth_date:"",
-        country_of_origin:"",
+        country_of_origin:"Argentina",
         terms_and_conditions:false
     },
     onSubmit:(values)=>{
@@ -32,7 +32,7 @@ const Form = () => {
             <form onSubmit={ handleSubmit } className="flex flex-col w-full gap-8">
                 {
                     formItems.items.map((formItem, index) => (
-                        <div className="flex flex-col gap-1" key={ formItem.name }>
+                        <div className="flex flex-col gap-1" key={ formItem.name + index}>
                             <Input
                                 value={ values[formItem.name] }
                                 onChange={ handleChange } 
