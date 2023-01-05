@@ -1,21 +1,49 @@
 import formItems from "../db/db.json"
 import Input from "./Input";
+import * as yup from "yup"
+import { useFormik } from "formik"
+
+const formSchema = yup.object().shape({
+    full_name: yup.string().min(3,"Mínimo 3 caracteres.").max(30,"Máximo 30 caracteres.").required("Completa este campo."),
+    email:yup.string().email("Email no válido.").required("Completa este campo."),
+    birth_date: yup.date().required("Completa este campo."),
+    country_of_origin: yup.string().required("Completa este campo."),
+    terms_and_conditions: yup.boolean().required("Completa este campo.")
+})
 
 const Form = () => {
 
-    console.log(formItems)
+    const { values, errors, touched, handleChange, handleSubmit } = useFormik({
+    initialValues:{
+        full_name:"",
+        email:"",
+        birth_date:"",
+        country_of_origin:"",
+        terms_and_conditions:false
+    },
+    onSubmit:(values)=>{
+        alert("enviao")
+    },
+    validationSchema: formSchema
+    })
+    console.log(values)
     return ( 
         <>
-            <form className="flex flex-col w-full gap-4">
+            <form onSubmit={ handleSubmit } className="flex flex-col w-full gap-8">
                 {
                     formItems.items.map((formItem, index) => (
-                         <Input 
-                            key={ formItem.name }
-                            name={ formItem.name }
-                            type={ formItem.type } 
-                            label={ formItem.label }
-                            options={ formItem?.options}
-                        />
+                        <div className="flex flex-col gap-1" key={ formItem.name }>
+                            <Input
+                                value={ values[formItem.name] }
+                                onChange={ handleChange } 
+                                required={ formItem.required }
+                                name={ formItem.name }
+                                type={ formItem.type } 
+                                label={ formItem.label }
+                                options={ formItem?.options}
+                            />
+                            { touched[formItem.name] && Boolean(errors[formItem.name]) && <span className="ml-4 mb-1 -mt-1 text-sm text-red-600 w-full">{ errors[formItem.name] }</span> }
+                        </div>
                     ))
                 }
                
