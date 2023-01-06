@@ -33,15 +33,15 @@ const Dashboard = () => {
                 <motion.div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mt-16 pb-10">
                     {
                         forms.length === 0 ? 
-                        Array(12).fill().map((item)=> (
-                            <div className="w-full">
+                        Array(12).fill().map((item, i)=> (
+                            <div key={i} className="w-full">
                                 <Skeleton />
                             </div>
                         ))
                         :
                         forms.map(( form, i ) => (
-                            <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.5, delay:i * 0.05}}>
-                                <UserItem key={form.id} user={form}/>
+                            <motion.div  key={form.id} initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.5, delay:i * 0.05}}>
+                                <UserItem user={form}/>
                             </motion.div>
                         ))
                     }

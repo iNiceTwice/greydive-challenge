@@ -1,24 +1,10 @@
-import { Link } from "react-router-dom";
 import Form from "../components/Form";
 import Logo from "../components/Logo"
-import Modal from "../components/Modal";
-import { HiCheckBadge } from "react-icons/hi2";
 import { motion } from "framer-motion";
 
 const Main = () => {
     return ( 
         <section className="w-full h-full grid grid-cols-1 lg:grid-cols-5">
-            <Modal>
-                <div className="flex flex-col items-center gap-4">
-                    <div className="flex gap-2 items-center">
-                        <h3 className="font-montserrat text-xl font-semibold">Enviado con éxito</h3>
-                        <HiCheckBadge className="text-green-600" size={30}/>
-                    </div>
-                    <Link className="w-full" to="/dashboard">
-                        <button className="w-full p-2 bg-secondary hover:bg-secondary/90 transition-colors text-white rounded-lg">Ir a Dashboard</button>
-                    </Link>
-                </div>
-            </Modal>
             <div className="w-full h-full p-4 col-span-2 hidden lg:flex text-white">
                 <motion.div 
                     className="flex flex-col items-center w-full h-full rounded-3xl gradient"
