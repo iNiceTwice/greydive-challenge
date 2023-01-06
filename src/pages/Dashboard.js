@@ -35,7 +35,7 @@ const Dashboard = () => {
                         forms.length === 0 ? 
                         Array(12).fill().map((item)=> (
                             <div className="w-full">
-                                <Skeleton viewBox="0 0 400 160"/>
+                                <Skeleton />
                             </div>
                         ))
                         :
