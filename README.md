@@ -1,5 +1,5 @@
 
-# Challenge Frontend Jr de Greydive
+# Challenge Frontend Jr by Greydive
 
 Simple App where a form is created from a JSON and the form data is saved and displayed from firebase.
 
