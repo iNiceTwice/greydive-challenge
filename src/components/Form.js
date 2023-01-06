@@ -26,7 +26,7 @@ const Form = () => {
     },
     validationSchema: formSchema
     })
-    console.log(values)
+
     return ( 
         <>
             <form onSubmit={ handleSubmit } className="flex flex-col w-full gap-8">
