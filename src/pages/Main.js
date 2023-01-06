@@ -1,4 +1,5 @@
 import Form from "../components/Form";
+import Logo from "../components/Logo"
 
 const Main = () => {
     return ( 
@@ -6,7 +7,7 @@ const Main = () => {
             <div className="w-full h-full p-4 col-span-2 hidden lg:flex text-white">
                 <div className="flex flex-col items-center w-full h-full rounded-3xl gradient">
                     <div className="w-full mt-3 p-16">
-                        <img alt="Greydive logo" loading="lazy" height={200} width={130} src="https://uploads-ssl.webflow.com/612fcc289671bc539ecd004e/612ff6936ef1a98f2a9b29cf_logo-greydive-gris.png"/>
+                        <Logo className="w-[130px]"/>
                     </div>
                     <div className="w-fit mt-6 xl:mt-16 p-20">
                         <h2 className="font-montserrat text-5xl font-semibold w-full text-start">Empieza tu experiencia con nosotros.</h2>
