@@ -25,7 +25,7 @@ const Input = ({ label, required, type, name, value, options, onChange }) => {
                         options.map((option) => (
                             <option 
                                 key={ option.label } 
-                                name={ option.value }
+                                name={ option.name }
                                 value={ option.value }
                             >
                                 { option.label }

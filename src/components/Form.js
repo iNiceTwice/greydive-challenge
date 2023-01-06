@@ -3,8 +3,6 @@ import Input from "./Input";
 import * as yup from "yup"
 import { useFormik } from "formik"
 import { saveFormData } from "../controllers/formController";
-import { toast } from "react-toastify"
-import { redirect } from "react-router-dom";
 
 const formSchema = yup.object().shape({
     full_name: yup.string().min(3,"Mínimo 3 caracteres.").max(30,"Máximo 30 caracteres.").required("Completa este campo."),
@@ -16,12 +14,6 @@ const formSchema = yup.object().shape({
 
 const Form = () => {
 
-    const notifySuccess = () => toast.success("Formulario enviado con éxito.",{
-        position: "bottom-right"
-    })
-    const notifyError = () => toast.error("Ups, intenta nuevamente.",{
-        position: "bottom-right"
-    })
     const { values, errors, touched, handleChange, handleSubmit } = useFormik({
     initialValues:{
         full_name:"",
@@ -31,13 +23,11 @@ const Form = () => {
         terms_and_conditions:false
     },
     onSubmit:(values)=>{
-        saveFormData(values)
+        saveFormData({...values, birth_date:new Date(values.birth_date).toLocaleDateString("es-AR")})
             .then(() => {
-                notifySuccess()
-                redirect("/dashboard")
+                
             })
             .catch(( error ) => {
-                notifyError()
                 console.log(error)
             })
     },
@@ -49,7 +39,7 @@ const Form = () => {
             <form onSubmit={ handleSubmit } className="flex flex-col w-full gap-8">
                 {
                     formItems.items.map((formItem, index) => (
-                        <div className="flex flex-col gap-1" key={ formItem.name + index}>
+                        <div className="flex flex-col gap-1" key={ formItem.name + index }>
                             <Input
                                 value={ values[formItem.name] }
                                 onChange={ handleChange } 
@@ -57,7 +47,7 @@ const Form = () => {
                                 name={ formItem.name }
                                 type={ formItem.type } 
                                 label={ formItem.label }
-                                options={ formItem?.options}
+                                options={ formItem.options}
                             />
                             { touched[formItem.name] && Boolean(errors[formItem.name]) && <span className="ml-4 mb-1 -mt-1 text-sm text-red-600 w-full">{ errors[formItem.name] }</span> }
                         </div>
