@@ -4,6 +4,7 @@ import * as yup from "yup"
 import { useFormik } from "formik"
 import { saveFormData } from "../controllers/formController";
 import { toast } from "react-toastify"
+import { redirect } from "react-router-dom";
 
 const formSchema = yup.object().shape({
     full_name: yup.string().min(3,"Mínimo 3 caracteres.").max(30,"Máximo 30 caracteres.").required("Completa este campo."),
@@ -31,7 +32,10 @@ const Form = () => {
     },
     onSubmit:(values)=>{
         saveFormData(values)
-            .then(() => notifySuccess())
+            .then(() => {
+                notifySuccess()
+                redirect("/dashboard")
+            })
             .catch(( error ) => {
                 notifyError()
                 console.log(error)

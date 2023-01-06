@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Dashboard from "./pages/Dashboard";
 import Main from "./pages/Main";
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
         <Routes>
           <Route path="*" element={<div>Error 404</div>} />
           <Route path="/" element={<Main/>} />
-          <Route path="/answers" element={<div>Respuestas</div>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
         </Routes>
       </BrowserRouter>  
   );
