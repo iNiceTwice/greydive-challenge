@@ -2,6 +2,8 @@ import formItems from "../database/db.json"
 import Input from "./Input";
 import * as yup from "yup"
 import { useFormik } from "formik"
+import { saveFormData } from "../controllers/formController";
+import { toast } from "react-toastify"
 
 const formSchema = yup.object().shape({
     full_name: yup.string().min(3,"Mínimo 3 caracteres.").max(30,"Máximo 30 caracteres.").required("Completa este campo."),
@@ -13,6 +15,12 @@ const formSchema = yup.object().shape({
 
 const Form = () => {
 
+    const notifySuccess = () => toast.success("Formulario enviado con éxito.",{
+        position: "bottom-right"
+    })
+    const notifyError = () => toast.error("Ups, intenta nuevamente.",{
+        position: "bottom-right"
+    })
     const { values, errors, touched, handleChange, handleSubmit } = useFormik({
     initialValues:{
         full_name:"",
@@ -22,7 +30,12 @@ const Form = () => {
         terms_and_conditions:false
     },
     onSubmit:(values)=>{
-        alert("enviao")
+        saveFormData(values)
+            .then(() => notifySuccess())
+            .catch(( error ) => {
+                notifyError()
+                console.log(error)
+            })
     },
     validationSchema: formSchema
     })
