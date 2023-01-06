@@ -1,4 +1,4 @@
-import formItems from "../db/db.json"
+import formItems from "../database/db.json"
 import Input from "./Input";
 import * as yup from "yup"
 import { useFormik } from "formik"

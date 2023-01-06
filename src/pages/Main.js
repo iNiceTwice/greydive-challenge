@@ -6,11 +6,11 @@ const Main = () => {
             <div className="w-full h-full p-4 col-span-2 hidden lg:flex text-white">
                 <div className="flex flex-col items-center w-full h-full rounded-3xl gradient">
                     <div className="w-full mt-3 p-16">
-                        <img height={200} width={130} src="https://uploads-ssl.webflow.com/612fcc289671bc539ecd004e/612ff6936ef1a98f2a9b29cf_logo-greydive-gris.png"/>
+                        <img alt="Greydive logo" height={200} width={130} src="https://uploads-ssl.webflow.com/612fcc289671bc539ecd004e/612ff6936ef1a98f2a9b29cf_logo-greydive-gris.png"/>
                     </div>
                     <div className="w-fit mt-6 xl:mt-16 p-20">
                         <h2 className="font-montserrat text-5xl font-semibold w-full text-start">Empieza tu experiencia con nosotros.</h2>
-                        <p className="font-montserrat mt-8 w-5/6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, earum. Laborum obcaecati harum, dolorum iste odio debitis ea libero ab soluta.</p>
+                        <p className="font-montserrat mt-8 lg:w-full xl:w-5/6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, earum. Laborum obcaecati harum, dolorum iste odio debitis ea libero ab soluta.</p>
                     </div>
                 </div>
             </div>
